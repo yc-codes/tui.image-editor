@@ -395,10 +395,10 @@ class ImageEditor {
         this.clearRedoStack();
       } else if (keyCode === keyCodes.Z) {
         // There is no error message on shortcut when it's empty
-        this.undo()['catch'](() => {});
+        this.undo()['catch'](() => { });
       } else if (keyCode === keyCodes.Y) {
         // There is no error message on shortcut when it's empty
-        this.redo()['catch'](() => {});
+        this.redo()['catch'](() => { });
       }
     }
 
@@ -732,6 +732,7 @@ class ImageEditor {
 
     return this.loadImageFromURL(imgUrl, imageName).then((value) => {
       URL.revokeObjectURL(imgFile);
+      this.ui.activeMenuEvent();
 
       return value;
     });
